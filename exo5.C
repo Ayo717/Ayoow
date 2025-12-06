@@ -1,22 +1,53 @@
 #include <stdio.h>
 
 int main() {
-    int h1, m1, h2, m2;
-    int totalMinutes, h, m;
+    
+    int jour_actuel, mois_actuel, annee_actuelle;
+    int jour_naissance, mois_naissance, annee_naissance;
+    int age;
 
-    printf("Donner la premiere heure (hh mm) : ");
-    scanf("%d %d", &h1, &m1);
+    printf("Entrez la date actuelle (Jour Mois Annee):\n");
+    
+    printf("Jour: ");
+    scanf("%d", &jour_actuel); 
+    
+    printf("Mois: ");
+    scanf("%d", &mois_actuel);
+    
+    printf("Annee: ");
+    scanf("%d", &annee_actuelle);
 
-    printf("Donner la deuxieme heure (hh mm) : ");
-    scanf("%d %d", &h2, &m2);
+    printf("\nEntrez la date de naissance (Jour Mois Annee):\n");
+    
+    printf("Jour: ");
+    scanf("%d", &jour_naissance);
+    
+    printf("Mois: ");
+    scanf("%d", &mois_naissance);
+    
+    printf("Annee: ");
+    scanf("%d", &annee_naissance);
 
-    totalMinutes = h1 * 60 + m1 + h2 * 60 + m2;
 
-    h = totalMinutes / 60;
-    m = totalMinutes % 60;
+    age = annee_actuelle - annee_naissance;
 
-    printf("Somme = %02d h %02d min\n", h, m);
+    
+    if (mois_actuel < mois_naissance) {
+        age = age - 1;
+    } 
+    
+    else if (mois_actuel == mois_naissance) {
+        if (jour_actuel < jour_naissance) {
+            age = age - 1;
+        }
+    }
+
+    printf("\n--- Resultat ---\n");
+    printf("Pour la date de naissance %d/%d/%d et la date actuelle %d/%d/%d:\n", 
+           jour_naissance, mois_naissance, annee_naissance, 
+           jour_actuel, mois_actuel, annee_actuelle);
+           
+    printf("Cette personne a %d ans.\n", age);
 
     return 0;
 }
-
