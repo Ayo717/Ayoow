@@ -1,7 +1,6 @@
 #include <stdio.h>
 
 int estBissextile(int annee) {
-    
     if ((annee % 4 == 0 && annee % 100 != 0) || (annee % 400 == 0))
         return 1;
     else
@@ -20,22 +19,15 @@ int main() {
         return 0;
     }
 
-    switch (m) {
-        case 1: case 3: case 5: case 7:
-        case 8: case 10: case 12:
-            maxJours = 31;
-            break;
-        case 4: case 6: case 9: case 11:
-            maxJours = 30;
-            break;
-        case 2:
-            if (estBissextile(a))
-                maxJours = 29;
-            else
-                maxJours = 28;
-            break;
-        default:
-            maxJours = 0;
+    if (m == 2) {
+        if (estBissextile(a))
+            maxJours = 29;
+        else
+            maxJours = 28;
+    } else if (m == 4 || m == 6 || m == 9 || m == 11) {
+        maxJours = 30;
+    } else {
+        maxJours = 31;
     }
 
     if (j >= 1 && j <= maxJours)
