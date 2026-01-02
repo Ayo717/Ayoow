@@ -1,23 +1,13 @@
 #include <stdio.h>
+
 int main() {
-    int A, B, C, tmp;
-    printf("Donner A, B et C : ");
-    scanf("%d %d %d", &A, &B, &C); 
-    if (A > B) {          
-        tmp = A;
-        A = B;
-        B = tmp;
+    int N, i, j, k;
+    printf("Entrez N : ");
+    scanf("%d", &N);
+    for (i = 1; i <= N; i++) {
+        for (k = 1; k <= N - i; k++) printf(" ");
+        for (j = 1; j <= 2 * i - 1; j++) printf("*");
+        printf("\n");
     }
-    if (B > C) {        
-        tmp = B;
-        B = C;
-        C = tmp;
-    }
-    if (A > B) {          
-        tmp = A;
-        A = B;
-        B = tmp;
-    }
-    printf("Les valeurs triees : %d %d %d\n", A, B, C);
     return 0;
 }
