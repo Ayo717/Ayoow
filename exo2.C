@@ -1,36 +1,23 @@
 #include <stdio.h>
-#include <math.h>
 
-int main() {
-    double a, b, c;
-    double delta, x1, x2;
-
-    printf("Donner a, b et c : ");
-    scanf("%lf %lf %lf", &a, &b, &c);
-
-    if (a == 0) {
-        if (b == 0) {
-            printf("Pas de solution (a = 0 et b = 0).\n");
-        } else {
-            x1 = -c / b;
-            printf("Equation du 1er degre, solution unique x = %lf\n", x1);
-        }
-        return 0;
-    }
-
-    delta = b * b - 4 * a * c;
-
-    if (delta > 0) {
-        x1 = (-b - sqrt(delta)) / (2 * a);
-        x2 = (-b + sqrt(delta)) / (2 * a);
-        printf("Deux solutions reelles distinctes : x1 = %lf et x2 = %lf\n", x1, x2);
-    } else if (delta == 0) {
-        x1 = -b / (2 * a);
-        printf("Une solution reelle double : x = %lf\n", x1);
-    } else {
-        printf("Pas de solutions reelle (delta < 0)\n");
-    }
-
-    return 0;
+int est_premier(int n) {
+    if (n <= 1) return 0;
+    for (int i = 2; i * i <= n; i++)
+        if (n % i == 0) return 0;
+    return 1;
 }
 
+int main() {
+    int N, count = 0, num = 2;
+    printf("Entrez N : ");
+    scanf("%d", &N);
+    while (count < N) {
+        if (est_premier(num)) {
+            printf("%d ", num);
+            count++;
+        }
+        num++;
+    }
+    printf("\n");
+    return 0;
+}
